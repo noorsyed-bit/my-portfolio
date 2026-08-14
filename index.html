@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noor ul Ain Syed | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary-color: #6a0dad; /* Rich Purple */
+            --secondary-color: #00d2ff; /* Teal accent */
+            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            --text-dark: #2c3e50;
+            --text-light: #636e72;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(106, 13, 173, 0.1);
+            --border-radius: 16px;
+            --icon-gold: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #9b59b6);
+            color: var(--white);
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg { 100% { transform: rotate(360deg); } }
+
+        .profile-header {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: var(--white);
+            display: block;
+        }
+
+        .header-content h1 { font-size: 2.8rem; margin-bottom: 5px; font-weight: 700; }
+        .header-content .subtitle { font-size: 1.2rem; font-weight: 300; opacity: 0.9; margin-bottom: 25px; }
+
+        .btn-cv {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cv:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* --- NAV --- */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 18px 0;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: 0.3s;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--primary-color);
+            transition: 0.3s;
+        }
+        nav ul li a:hover { color: var(--primary-color); }
+        nav ul li a:hover::after { width: 100%; }
+
+        /* --- SECTIONS --- */
+        section { padding: 70px 0; }
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- ABOUT --- */
+        .about-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 30px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--primary-color);
+        }
+
+        .skill-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tags span {
+            background: #f0e6ff;
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- EXPERIENCE --- */
+        .exp-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        
+        .exp-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .exp-card h3 { color: var(--text-dark); font-size: 1.3rem; }
+        .exp-meta { color: var(--primary-color); font-weight: 600; margin-bottom: 10px; font-size: 0.95rem; }
+        .exp-card p { color: var(--text-light); margin-bottom: 20px; }
+
+        .exp-download {
+            align-self: flex-start;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .exp-download:hover { background: var(--secondary-color); color: var(--text-dark); }
+
+        /* --- PROJECTS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        
+        .project-icon {
+            font-size: 3.5rem; 
+            color: var(--primary-color); 
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .project-card h3 { color: var(--text-dark); margin-bottom: 10px; font-size: 1.1rem; }
+        .project-card p { color: var(--text-light); margin-bottom: 20px; font-size: 0.95rem; }
+
+        .project-link {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .project-link:hover { background: var(--primary-color); color: var(--white); }
+
+        /* --- EDUCATION --- */
+        .edu-wrapper { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        
+        .edu-card {
+            background: var(--white);
+            padding: 25px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+        .edu-card:hover { border-bottom-color: var(--secondary-color); }
+        .edu-card h3 { color: var(--primary-color); }
+        .edu-card p { color: var(--text-light); font-weight: 500; }
+
+        /* --- CONTACT --- */
+        .contact-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-box p { margin: 15px 0; color: var(--text-light); font-size: 1.05rem; }
+        .contact-box i { color: var(--primary-color); margin-right: 12px; width: 25px; }
+
+        .social-links { margin-top: 25px; display: flex; justify-content: center; gap: 20px; }
+        .social-links a {
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 50px; height: 50px;
+            background: #f0e6ff; color: var(--primary-color);
+            border-radius: 50%; font-size: 1.3rem;
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            background: var(--primary-color); color: var(--white);
+            transform: translateY(-4px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 25px 0;
+            margin-top: 50px;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 { font-size: 2rem; }
+            nav ul { gap: 15px; }
+            nav ul li a { font-size: 0.9rem; }
+            .edu-card { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+            .project-card { padding: 25px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container profile-header">
+            <!-- Updated Image Tag to match .jpeg file extension -->
+            <img 
+                src="image/my-photo1.jpg" 
+                alt="Noor ul Ain Syed" 
+                class="profile-img"
+                onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Noor+ul+Ain+Syed&background=6a0dad&color=fff&size=180';"
+            >
+            <div class="header-content">
+                <h1>Noor ul Ain Syed</h1>
+                <div class="subtitle">
+                    <br> Computer Science Graduate | Aspiring Cybersecurity Specialist
+                    <br> I am a passionate Computer Science graduate with a strong interest in Cybersecurity and modern web technologies. I enjoy building user-friendly web applications, solving real-world problems, and continuously learning new technologies. My goal is to pursue a successful career in Cybersecurity while contributing to innovative and secure digital solutions.</div>
+                <a href="#" class="btn-cv"><i class="fas fa-download"></i> Download CV</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- About -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    "A Computer Science graduate from the University of Gujrat with a solid foundation in web development and a dedicated focus on cybersecurity. I thrive on exploring emerging technologies, tackling complex challenges, and engineering secure digital solutions. Combining strong analytical skills with a keen focus on secure software design, I am driven to expand my technical expertise through advanced studies and build an impactful career as a Cybersecurity Specialist."
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>UX/UI</span>
+                        <span>Python</span> <span>C++</span> <span>SQL</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-pencil-ruler"></i> Design & Tools</h3>
+                    <div class="skill-tags">
+                        <span>Graphic Designing</span> <span>Canva</span> <span>Figma</span>
+                        <span>MS Office</span> <span>VS Code</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skill-tags">
+                        <span>Communication</span> <span>Team Collaboration</span> <span>Problem Solving</span>
+                        <span>Adaptability</span> <span>Time Management</span> <span>Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="exp-grid">
+                <div class="exp-card">
+                    <div>
+                        <h3>Remote Graphic Designer & Digital Operations Specialist</h3>
+                        <div class="exp-meta">Parabilis Tech | Dec 2025 – Present</div>
+                        <p>Designed high-converting visual ads and managed social media accounts. Optimized product listings and maintained accurate sales/inventory data using Excel.</p>
+                    </div>
+                    <a href="Noor_ul_ain_Syed_Experience_Letter.pdf" class="exp-download" target="_blank"><i class="fas fa-file-pdf"></i> View Letter</a>
+                </div>
+                <div class="exp-card">
+                    <div>
+                        <h3>Senior Executive</h3>
+                        <div class="exp-meta">G-Tech Solar (SMC) Pvt. Ltd | Jul 2025 – Jul 2026</div>
+                        <p>Maintained professional client relations, managed operational tasks, and demonstrated exceptional organizational skills while handling daily responsibilities with integrity.</p>
+                    </div>
+                    <a href="Noor_ul_ain_Syed_experience_letter_Gtec.pdf" class="exp-download" target="_blank"><i class="fas fa-file-pdf"></i> View Letter</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <i class="fas fa-shopping-cart project-icon"></i>
+                    <h3>Responsive E-Commerce UI</h3>
+                    <p>A fully responsive e-commerce user interface designed for optimal user experience across devices.</p>
+                    <a href="https://noorsyed-bit.github.io/responsive-e-commerce-UI/" target="_blank" class="project-link">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <i class="fas fa-desktop project-icon"></i>
+                    <h3>Landing Page</h3>
+                    <p>A clean and modern landing page template, focusing on conversion-driven design and layout.</p>
+                    <a href="https://noorsyed-bit.github.io/landing-page/" target="_blank" class="project-link">View Project</a>
+                </div>
+                
+                <div class="project-card">
+                    <i class="fas fa-check-circle project-icon"></i>
+                    <h3>To-Do List App</h3>
+                    <p>A functional and interactive to-do list application for daily task management and productivity.</p>
+                    <a href="https://noorsyed-bit.github.io/to-do-list/" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="edu-wrapper">
+                <div class="edu-card">
+                    <h3>BS in Computer Science</h3>
+                    <p>University of Gujrat | 2022 – 2026</p>
+                </div>
+                <div class="edu-card">
+                    <h3>Intermediate (ICS)</h3>
+                    <p>Marghazar College for Women | 2020 – 2022</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-box">
+                <p><i class="fas fa-phone-alt"></i> +92 3344059550</p>
+                <p><i class="fas fa-envelope"></i> nrlnsyed@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Madina Syedan, Gujrat, Pakistan</p>
+                <div class="social-links">
+                    <a href="https://github.com/noorsyed-bit" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/noor-ul-ain-syed-7890783aa" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:nrlnsyed@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Noor ul Ain Syed. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
